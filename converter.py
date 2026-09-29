@@ -9,6 +9,9 @@ def convert(amount, from_currency, to_currency):
     if not isinstance(amount, (int, float)):
         print("Ошибка: введите число")
         return None
+    if amount < 0:
+        print("Введите положительное число")
+        return None
     rate = get_rate(from_currency, to_currency)
     result = amount * rate
     return round(result, 2)
