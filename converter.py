@@ -27,4 +27,5 @@ if __name__ == "__main__":
     from_curr = input("Из какой валюты: ").upper()
     to_curr = input("В какую валюту: ").upper()
     result = convert(amount, from_curr, to_curr)
-    print(f"Результат: {result}")
+    if result is not None:
+        print(f"Результат: {result}")
