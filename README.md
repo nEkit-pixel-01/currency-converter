@@ -20,6 +20,7 @@
 - **FastAPI** + **uvicorn**: веб-API и сервер
 - **pytest**: unit-тесты
 - **git / GitHub**: история изменений
+- **Docker** 
 
 Курсы берутся из бесплатного API [exchangerate-api.com](https://www.exchangerate-api.com/). Данные там обновляются примерно раз в сутки, поэтому курс может немного отличаться от биржевого.
 
@@ -66,6 +67,18 @@ uvicorn main:app --reload
 
 - **http://127.0.0.1:8000/docs**: интерактивная документация Swagger UI, где можно прямо в браузере попробовать запросы;
 - **http://127.0.0.1:8000/currencies**: список доступных валют.
+
+### Вариант 3: через Docker
+
+Собрать образ и запустить контейнер:
+
+​```bash
+docker build -t currency-converter .
+docker run -d -p 8000:8000 currency-converter
+​```
+
+После запуска документация будет доступна по адресу http://localhost:8000/docs.
+Остановить контейнер: `docker ps`, затем `docker stop <имя контейнера>`.
 
 Эндпоинты:
 
