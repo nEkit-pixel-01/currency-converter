@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:16
+    container_name: pg
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: converter
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql+psycopg://postgres:secret@db:5432/converter
+    depends_on:
+      - db
