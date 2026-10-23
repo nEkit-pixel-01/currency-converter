@@ -1,0 +1,11 @@
+services:
+  db:
+    image: postgres:16
+    container_name: pg
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: converter
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
